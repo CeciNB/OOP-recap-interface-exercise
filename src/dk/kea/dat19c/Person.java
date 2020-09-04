@@ -1,6 +1,6 @@
 package dk.kea.dat19c;
 
-public class Person {
+public class Person implements Comparable<Person>{
     String name;
     int height;
 
@@ -28,6 +28,17 @@ public class Person {
 
     @Override
     public String toString() {
-        return "\nNavn: " + name + " Højde: " + height;
+        return "Navn: " + name + " Højde: " + height;
+    }
+
+    @Override
+    public int compareTo(Person p) {
+        int result = 0;
+        if (this.name.toLowerCase().compareTo(p.getName().toLowerCase()) != 0) {
+            result = this.name.toLowerCase().compareTo(p.getName().toLowerCase());
+        } else {
+            result = this.height - p.getHeight();
+        }
+        return result;
     }
 }
